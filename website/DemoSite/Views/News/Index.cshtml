@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/css/news/news.css" rel="stylesheet" />
+<script src="~/js/news/news.js"></script>
+<div class="news-segment">
+    <div class="news-header">
+        <div class="title"></div>
+        <div class="author"></div>
+    </div>
+
+    <div class="news-content">
+
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var news = new News();
+
+        news.init();
+    });
+</script>
+

@@ -1,0 +1,62 @@
+﻿<div class="row-fluid">
+    <div class="box span12">
+        <div class="box-header">
+            <h2><i class="icon-edit"></i>新闻编辑</h2>
+            <div class="box-icon">
+                <a href="#" class="btn-setting"><i class="icon-wrench"></i></a>
+                <a href="#" class="btn-minimize"><i class="icon-chevron-up"></i></a>
+                <a href="#" class="btn-close"><i class="icon-remove"></i></a>
+            </div>
+        </div>
+        <div class="box-content">
+
+            <div class="control-group">
+                <label class="control-label" for="tbxTitle">新闻标题 </label>
+                <div class="controls">
+                    <input type="text" class="span6 typeahead" id="tbxTitle" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]' />
+                    @*<p class="help-block">Start typing to activate auto complete!</p>*@
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="tbxAuthor">作者 </label>
+                <div class="controls">
+                    <input type="text" class="span6 typeahead" id="tbxAuthor" data-provide="typeahead" data-items="4" data-source='["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]' />
+                    @*<p class="help-block">Start typing to activate auto complete!</p>*@
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="tbxCreateDate">日期</label>
+                <div class="controls">
+                    <input type="text" class="input-xlarge datepicker" id="tbxCreateDate" value="2018-08-28" />
+                </div>
+            </div>
+            <div class="control-group hidden-phone">
+                <label class="control-label" for="tbxAbstract">新闻摘要</label>
+                <div class="controls">
+                    <textarea class="cleditor" id="tbxAbstract" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="control-group hidden-phone">
+                <label class="control-label" for="tbxContent">新闻正文</label>
+                <div class="controls">
+                    <textarea class="cleditor" id="tbxContent" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="btnSave">保存</button>
+                <button type="reset" class="btn">取消</button>
+            </div>
+
+
+        </div>
+    </div>
+</div><!--/row-->
+<script src="~/js/custom/news.js"></script>
+<script>
+
+    $(document).ready(function () {
+        var news = new News();
+        news.initEditUI();
+    });
+</script>

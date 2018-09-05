@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+
+<script src="~/js/site.js"></script>
+<script src="~/js/news/newsabstract.js"></script>
+
+<!--列表页-->
+<div>
+    <div class="news-list">
+       
+    </div>
+
+    <div class="author-list">
+        <div class="widget">
+            <h4 class="title">合作</h4>
+            <div>
+                <p>QQ:591387160</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var newsAbstract = new NewsAbstract();
+
+        newsAbstract.init();
+    });
+</script>

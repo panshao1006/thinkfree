@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>欢迎来到 IT-News</title>
+    <meta name="keywords" content="IT新闻,it news,互联网新闻,业界新闻,IT资讯,IT业界,UiPath">
+    <meta name="description" content="畅想科技，畅谈IT业界的新鲜事、奇趣事和热门焦点，掌控最热最新的互联网新闻、科技新闻和IT业界动态">
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/common/thinkfree.url.js"></script>
+</head>
+<body>
+    <!--顶部内容-->
+    <!--<div class="main-header">
+
+    </div>-->
+    <!--导航-->
+    <div class="main-nav">
+        <ul>
+            <li class="nav-current">
+                <a href="/">新闻</a>
+            </li>
+            <li>
+                <a href="javascript:void(0);">技术</a>
+            </li>
+        </ul>
+    </div>
+
+    <!--正文-->
+    <div class="main-content">
+        @RenderBody()
+    </div>
+    <!--底部-->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <span>Copyright © <a href="http://www.thinkfree.top/">畅想科技</a></span> |
+                    <span><a href="http://www.miibeian.gov.cn/" taret="_blank">粤ICP备18096843</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\News.DAL\News.DAL.csproj" />
+    <ProjectReference Include="..\News.Interface\News.Interface.csproj" />
+  </ItemGroup>
+
+</Project>

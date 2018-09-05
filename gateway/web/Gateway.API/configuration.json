@@ -1,0 +1,109 @@
+﻿{
+  "Routes": [
+    {
+      "DownstreamHostInfo": [
+        {
+          "IP": "127.0.0.1",
+          "Port": 5001
+        }
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/news/",
+      "DownstreamServiceName": null,
+      "UpstreamHost": "127.0.0.1:5000",
+      "UpstreamPathTemplate": "/api/news/get",
+      "UpstreamHttpMethod": "get",
+      "Authentication": false
+    },
+    {
+      "DownstreamHostInfo": [
+        {
+          "IP": "127.0.0.1",
+          "Port": 5001
+        }
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/news/",
+      "DownstreamServiceName": null,
+      "UpstreamHost": "127.0.0.1:5000",
+      "UpstreamPathTemplate": "/api/news/post",
+      "UpstreamHttpMethod": "post",
+      "Authentication": false
+    },
+    {
+      "DownstreamHostInfo": [
+        {
+          "IP": "127.0.0.1",
+          "Port": 5001
+        }
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/news/",
+      "DownstreamServiceName": null,
+      "UpstreamHost": "127.0.0.1:5000",
+      "UpstreamPathTemplate": "/api/news/delete",
+      "UpstreamHttpMethod": "delete",
+      "Authentication": true
+    },
+    {
+      "DownstreamHostInfo": [
+        {
+          "IP": "127.0.0.1",
+          "Port": 5001
+        }
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/news/",
+      "DownstreamServiceName": null,
+      "UpstreamHost": "127.0.0.1:5000",
+      "UpstreamPathTemplate": "/api/news/put",
+      "UpstreamHttpMethod": "put",
+      "Authentication": true
+    },
+    {
+      "DownstreamHostInfo": [
+        {
+          "IP": "127.0.0.1",
+          "Port": 5001
+        }
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/newsabstract/",
+      "DownstreamServiceName": null,
+      "UpstreamHost": "127.0.0.1:5000",
+      "UpstreamPathTemplate": "/api/newsabstract/get",
+      "UpstreamHttpMethod": "get",
+      "Authentication": false
+    },
+    {
+      "DownstreamHostInfo": [
+        {
+          "IP": "127.0.0.1",
+          "Port": 5002
+        }
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/user/",
+      "DownstreamServiceName": null,
+      "UpstreamHost": "127.0.0.1:5000",
+      "UpstreamPathTemplate": "/api/user/login",
+      "UpstreamHttpMethod": "get",
+      "Authentication": false
+    },
+    {
+      "DownstreamHostInfo": [
+        {
+          "IP": "127.0.0.1",
+          "Port": 5002
+        }
+      ],
+      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/identity/validate",
+      "DownstreamServiceName": null,
+      "UpstreamHost": "127.0.0.1:5000",
+      "UpstreamPathTemplate": "/api/identity/validate",
+      "UpstreamHttpMethod": "post",
+      "Authentication": false
+    }
+  ]
+}
