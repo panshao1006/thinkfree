@@ -48,5 +48,16 @@ namespace Gateway.Model
         /// 是否存在错误
         /// </summary>
         public bool IsError => Errors.Count > 0;
+
+        public string ToErrorString()
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach(ErrorBase error in Errors)
+            {
+                builder.AppendLine(error.ToString());
+            }
+
+            return builder.ToString();
+        }
     }
 }

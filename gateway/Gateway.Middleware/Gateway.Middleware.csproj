@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\core\Core.Common\Core.Common.csproj" />
+    <ProjectReference Include="..\..\core\Core.Log\Core.Log.csproj" />
     <ProjectReference Include="..\..\core\Core.Model\Core.Model.csproj" />
     <ProjectReference Include="..\Gateway.Common\Gateway.Common.csproj" />
     <ProjectReference Include="..\Gateway.Model\Gateway.Model.csproj" />

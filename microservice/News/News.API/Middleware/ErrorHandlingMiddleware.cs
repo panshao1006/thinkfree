@@ -1,7 +1,10 @@
 ﻿using Core.Common;
 using Core.Common.CustomException;
+using Core.Log;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using News.Model;
+using News.Model.Logger;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,9 +20,17 @@ namespace News.API.Middleware
     {
         private readonly RequestDelegate next;
 
-        public ErrorHandlingMiddleware(RequestDelegate next)
+        private ICustomLogger _log;
+
+        private LogOptions _logOptions;
+
+        public ErrorHandlingMiddleware(RequestDelegate next , ICustomLogger log , IOptions<LogOptions> logOptions)
         {
             this.next = next;
+
+            this._log = log;
+
+            this._logOptions = logOptions.Value;
         }
 
 
@@ -82,7 +93,7 @@ namespace News.API.Middleware
         /// <param name="statusCode"></param>
         /// <param name="msg"></param>
         /// <returns></returns>
-        private static Task HandleExceptionAsync(HttpContext context, int statusCode, string msg)
+        private  Task HandleExceptionAsync(HttpContext context, int statusCode, string msg)
         {
             ErrorResultModel errorModel = new ErrorResultModel()
             {
@@ -90,6 +101,16 @@ namespace News.API.Middleware
                 Code = statusCode,
                 RequestUri = context.Request.GetAbsoluteUri()
             };
+
+            BaseLogModel logModel = new BaseLogModel()
+            {
+                ServiceName = _logOptions.ServiceName,
+                Type = 4,
+                Content = msg
+            };
+
+            //增加到日志
+            _log.Info<BaseLogModel>(logModel);
 
             var result = JsonConvert.SerializeObject(new { error = errorModel });
             context.Response.ContentType = "application/json;charset=utf-8";

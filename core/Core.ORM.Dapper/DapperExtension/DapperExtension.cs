@@ -1,4 +1,5 @@
 ﻿using Core.Common.ConfigManager;
+using Core.Log;
 using Core.ORM.Dapper.Enum;
 using Core.ORM.Dapper.Filter;
 using Dapper;
@@ -30,13 +31,16 @@ namespace Core.ORM.Dapper
         //所有model对象的主键值
         private string _primaryKey = "id";
 
-
         private static Dictionary<string, Dictionary<SqlStringType, string>> _sqlStringCache;
 
         /// <summary>
         /// 对象的放射类型
         /// </summary>
         private static Dictionary<string, PropertyInfo[]> _objectPropertyCache;
+
+        public delegate void ExecutedEventHandler(string sqlcommand);
+
+        public ExecutedEventHandler ExecutedEvent;
 
 
         public DapperExtension()
@@ -95,6 +99,12 @@ namespace Core.ORM.Dapper
 
                 List<T> result = conn.Query<T>(sqlCommand.Sql, sqlCommand.Parameters).ToList();
 
+                if (ExecutedEvent != null)
+                {
+                    string sqlCommandString = JsonConvert.SerializeObject(sqlCommand);
+                    ExecutedEvent(sqlCommandString);
+                }
+
                 return result;
             }
         }
@@ -112,6 +122,12 @@ namespace Core.ORM.Dapper
                 var sqlCommand = GetSqlCommand<T>(SqlStringType.Insert, null, t);
 
                 int effRows = conn.Execute(sqlCommand.Sql, sqlCommand.Parameters);
+
+                if (ExecutedEvent != null)
+                {
+                    string sqlCommandString = JsonConvert.SerializeObject(sqlCommand);
+                    ExecutedEvent(sqlCommandString);
+                }
 
                 //如果执行成功，返回对象，如果不成功返回空
                 if (effRows > 0)
@@ -131,6 +147,12 @@ namespace Core.ORM.Dapper
 
                 int effRows = conn.Execute(sqlCommand.Sql, sqlCommand.Parameters);
 
+                if (ExecutedEvent != null)
+                {
+                    string sqlCommandString = JsonConvert.SerializeObject(sqlCommand);
+                    ExecutedEvent(sqlCommandString);
+                }
+
                 //如果执行成功，返回对象，如果不成功返回空
 
                 return effRows > 0;
@@ -146,6 +168,11 @@ namespace Core.ORM.Dapper
 
                 int effRows = conn.Execute(sqlCommand.Sql, sqlCommand.Parameters);
 
+                if (ExecutedEvent != null)
+                {
+                    string sqlCommandString = JsonConvert.SerializeObject(sqlCommand);
+                    ExecutedEvent(sqlCommandString);
+                }
                 //如果执行成功，返回对象，如果不成功返回空
 
                 return effRows > 0;

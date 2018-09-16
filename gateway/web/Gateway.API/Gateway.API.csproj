@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\core\Core.Log\Core.Log.csproj" />
     <ProjectReference Include="..\..\Gateway.Common\Gateway.Common.csproj" />
     <ProjectReference Include="..\..\Gateway.Middleware\Gateway.Middleware.csproj" />
   </ItemGroup>

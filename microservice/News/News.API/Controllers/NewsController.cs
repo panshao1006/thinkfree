@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.EventBus.Interface;
+using Core.EventBus.RabbitMQ;
 using Microsoft.AspNetCore.Mvc;
 using News.BLL;
+using News.Common.IntegrationEvents.Events;
 using News.Interface.BLL;
 using News.Model;
 using News.Model.Filter;
@@ -15,9 +18,13 @@ namespace News.API.Controllers
     {
         private INewsBusiness _service;
 
+        private IEventBus _eventBus;
+
         public NewsController()
         {
             _service = new NewsBusiness();
+
+            //_eventBus = new RabbitMQEventBus("test");
         }
 
         [HttpGet]
@@ -60,6 +67,15 @@ namespace News.API.Controllers
         public OperationResult Delete(string id)
         {
             var result = _service.Delete(id);
+
+            //LogAddedIntegrationEvent eventData = new LogAddedIntegrationEvent()
+            //{
+            //    LogContent = "test log text",
+            //    LogType = 1
+            //};
+
+            //_eventBus.Publish(eventData);
+
 
             return result;
         }

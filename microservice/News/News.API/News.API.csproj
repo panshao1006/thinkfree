@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\core\Core.EventBus\Core.EventBus.csproj" />
+    <ProjectReference Include="..\..\..\core\Core.Log\Core.Log.csproj" />
+    <ProjectReference Include="..\News.API.Common\News.Common.csproj" />
     <ProjectReference Include="..\News.Business\News.BLL.csproj" />
     <ProjectReference Include="..\News.Interface\News.Interface.csproj" />
   </ItemGroup>

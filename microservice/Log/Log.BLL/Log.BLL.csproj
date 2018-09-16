@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Log.Common\Log.Common.csproj" />
+    <ProjectReference Include="..\Log.DAL\Log.DAL.csproj" />
+    <ProjectReference Include="..\Log.Interface\Log.Interface.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -22,6 +22,8 @@ namespace Gateway.Common.DependencyInjection
         public static void AddCustomServices(this IServiceCollection services , IConfiguration configuration)
         {
             services.Configure<FileConfiguration>(configuration);
+
+            services.Configure<FileConfiguration>(configuration);
         }
     }
 }

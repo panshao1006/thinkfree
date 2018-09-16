@@ -4,4 +4,16 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Elasticsearch.Net" Version="6.2.0" />
+    <PackageReference Include="NEST" Version="6.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\core\Core.Common\Core.Common.csproj" />
+    <ProjectReference Include="..\..\..\core\Core.EventBus\Core.EventBus.csproj" />
+    <ProjectReference Include="..\Log.Interface\Log.Interface.csproj" />
+    <ProjectReference Include="..\Log.Model\Log.Model.csproj" />
+  </ItemGroup>
+
 </Project>

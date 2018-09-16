@@ -1,4 +1,5 @@
-﻿using Gateway.Common;
+﻿using Core.Log;
+using Gateway.Common;
 using Gateway.Common.Responder;
 using Gateway.Model;
 using Gateway.Model.CustomError;
@@ -19,11 +20,15 @@ namespace Gateway.Middleware.Middleware
 
         private HttpResponser _responder;
 
-        public ResponderMiddleware(CustomRequestDelegate next)
+        private ICustomLogger _log;
+
+        public ResponderMiddleware(CustomRequestDelegate next , ICustomLogger log)
         {
             _next = next;
 
             _responder = new HttpResponser();
+
+            _log = log;
         }
 
         public async Task Invoke(DownstreamContext context)
@@ -32,7 +37,14 @@ namespace Gateway.Middleware.Middleware
 
             if (context.IsError)
             {
-                //Logger.LogWarning($"{context.Errors.ToErrorString()} errors found in {MiddlewareName}. Setting error response for request path:{context.HttpContext.Request.Path}, request method: {context.HttpContext.Request.Method}");
+                //保存请求的信息
+                BaseLogModel logModel = new BaseLogModel()
+                {
+                    Type = 1,
+                    Content = $"{context.ToErrorString()} errors found in {MiddlewareName}. Setting error response for request path:{context.HttpContext.Request.Path}, request method: {context.HttpContext.Request.Method}"
+                };
+
+                _log.Error(logModel);
 
                 SetErrorResponse(context.HttpContext, context.Errors);
             }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.DependencyInjection;
 using Gateway.Common.Configuration;
+using Core.Log;
 
 namespace Gateway.Middleware
 {
@@ -42,7 +43,11 @@ namespace Gateway.Middleware
         /// <returns></returns>
         private static IPipelineBuilder InitPipeline(this IPipelineBuilder builder)
         {
-            builder.UseMiddleware<ResponderMiddleware>();
+            var logger = builder.ApplicationServices.GetRequiredService<ICustomLogger>();
+
+            builder.UseMiddleware<LoggerMiddlewate>(logger); 
+
+            builder.UseMiddleware<ResponderMiddleware>(logger);
 
             builder.UseMiddleware<RouteFinderMiddleware>();
 
