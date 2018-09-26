@@ -9,10 +9,10 @@ namespace Core.EventBus.Model
         public IntegrationEvent()
         {
             Id = Guid.NewGuid();
-            CreationDate = DateTime.UtcNow;
+            CreateDate = DateTime.UtcNow;
         }
 
         public Guid Id { get; }
-        public DateTime CreationDate { get; }
+        public DateTime CreateDate { get; }
     }
 }
